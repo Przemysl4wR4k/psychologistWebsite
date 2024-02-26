@@ -1,4 +1,6 @@
+//TODO Global variables
 $md-screen: 768px;
+$lg-screen: 992px;
 iframe {
     position: fixed;
     top: 0px;
@@ -10,20 +12,29 @@ iframe {
     padding: 0;
     overflow: hidden;
     z-index: 0;
-    height: calc(100% - 128px);
+    height: calc(100% - 56px);
 }
 
 .card-body {
     padding: 32px;
 }
-@media (min-width: $md-screen) {
-    section.text-gray-600.relative {
-      .container-lg {
-        margin-top: 5rem; // Zwiększenie marginesu górnego
-      }
-      .col-lg-4.col-md-12 {
-        margin-left: auto;
-        margin-right: auto; // Centralizacja kolumny na ekranie md
-      }
+@media (min-width: $lg-screen) {
+    .container-lg{
+        margin-top: 5rem;
     }
+    .card {
+        max-width: 70vw;
+    }
+  }
+@media (max-width: $lg-screen) {
+    .container-lg{
+        margin-top: 30rem;
+        .d-flex{
+            justify-content: center;
+        }
+    }
+    .card {
+        min-width: 70vw;
+    }
+
   }
