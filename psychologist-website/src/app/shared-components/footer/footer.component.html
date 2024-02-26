@@ -1,1 +1,42 @@
-<p>footer works!</p>
+<footer style="position: fixed; bottom: 0; left: 0; right: 0;">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="row">
+                <! --TODO: separate component -->
+                <div class="col-md-4">
+                    <div class="w-100 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <fa-icon [icon]="faLocationDot"></fa-icon>
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="text">
+                            <p><span class="contact-type">Adres:</span> plac Teatralny 3/28, 50-051 Wrocław</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="w-100 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <fa-icon [icon]="faPhone"></fa-icon>
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="text">
+                            <p><span class="contact-type">Telefon:</span> +48 123 112 111</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="w-100 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <fa-icon [icon]="faPaperPlane"></fa-icon>
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="text">
+                            <p><span class="contact-type">Email:</span> random.address&#64;gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
