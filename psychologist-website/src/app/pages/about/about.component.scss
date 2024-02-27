@@ -7,3 +7,15 @@ img {
 .container {
     max-width: none;
 }
+
+//TODO Global variables
+$md-screen: 768px;
+$lg-screen: 992px;
+
+@media (min-width: $lg-screen) {
+    ::ng-deep section { //I know this is deprecated, however it is the most convenient way to do it
+        & > app-person-card:nth-child(2) .container .row {
+            flex-direction: row-reverse;
+        }
+    }
+}

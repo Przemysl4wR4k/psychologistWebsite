@@ -1,22 +1,5 @@
-//TODO Global variables
-$md-screen: 768px;
-$lg-screen: 992px;
-
-@media (min-width: $lg-screen) {
-    .container {
-        row.odd {
-            flex-direction: row;
-        }
-        row.even {
-            flex-direction: row-reverse;
-        }
-    }
-}
-
-@media (max-width: $lg-screen) {
-    .container {
-        row {
-            flex-direction: column;
-        }
-    }
+img {
+    border-radius: 50%;
+    width: 60%;
+    margin: auto;
 }

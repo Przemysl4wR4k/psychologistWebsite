@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-person-card',
@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './person-card.component.scss'
 })
 export class PersonCardComponent {
-  @Input() odd!: boolean
+
 }

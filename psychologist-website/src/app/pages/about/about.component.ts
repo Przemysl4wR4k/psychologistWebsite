@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { PersonCardComponent } from './person-card/person-card.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { PersonCardComponent } from './person-card/person-card.component';
   standalone: true,
   imports: [PersonCardComponent],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+  styleUrl: './about.component.scss',
 })
 export class AboutComponent {
 
