@@ -20,8 +20,9 @@
                               <label for="message" class="form-label">Wiadomość</label>
                               <textarea class="form-control" id="message" rows="4"></textarea>
                           </div>
-                          <button type="submit" class="btn btn-primary">Wyślij</button>
-                      </form>
+                          <!-- <button type="submit" class="btn btn-primary">Wyślij</button> -->
+                          <app-fancy-button [buttonText]="'Wyślij'" [buttonSize]="buttonSize.M"></app-fancy-button>
+                        </form>
                   </div>
               </div>
           </div>
