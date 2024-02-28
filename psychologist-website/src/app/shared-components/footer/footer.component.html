@@ -4,14 +4,7 @@
             <div class="row">
                 <! --TODO: separate component -->
                 <div class="col-md-4">
-                    <div class="w-100 text-center">
-                        <div class="icon d-flex align-items-center justify-content-center">
-                            <fa-icon [icon]="faLocationDot"></fa-icon>
-                        </div>
-                        <div class="text">
-                            <p><span class="contact-type">Adres:</span> plac Teatralny 3/28, 50-051 Wrocław</p>
-                        </div>
-                    </div>
+                    <app-footer-item [icon]="faLocationDot" [contactType]="'Adres'" [contactInfo]="plac Teatralny 3/28, 50-051 Wrocław"></app-footer-item>  
                 </div>
                 <div class="col-md-4">
                     <div class="w-100 text-center">
@@ -27,6 +20,7 @@
                     <div class="w-100 text-center">
                         <div class="icon d-flex align-items-center justify-content-center">
                             <fa-icon [icon]="faPaperPlane"></fa-icon>
+                            <i class="fas fa-camera"></i>
                         </div>
                         <div class="text">
                             <p><span class="contact-type">Email:</span> random.address&#64;gmail.com</p>
