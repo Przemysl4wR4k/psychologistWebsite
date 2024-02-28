@@ -1,6 +1,5 @@
-//TODO Global variables
-$md-screen: 768px;
-$lg-screen: 992px;
+@import '../../../scss/variables.scss';
+
 iframe {
     position: fixed;
     top: 0px;

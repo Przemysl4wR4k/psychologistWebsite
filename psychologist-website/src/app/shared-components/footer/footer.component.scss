@@ -1,28 +1,5 @@
-//TODO Global variables
-// $md-screen: 768px;
-// $lg-screen: 992px;
-// @media (max-width: $lg-screen) {
-//     footer .row {
-//         display: flex;
-//         justify-content: space-evenly   ;
-//     }
-//   }
-
 footer {
     z-index: 999;
     position: relative;
     margin-top: 4rem;
-}
-.icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #bc9864;
-    margin: 0 auto;
-    margin-bottom: 20px;
-}
-.contact-type {
-    font-weight: 500;
-  //  color: #bc9864;
-    display: block;
 }
