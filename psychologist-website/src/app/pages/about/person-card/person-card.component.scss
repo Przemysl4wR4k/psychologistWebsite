@@ -26,6 +26,9 @@ img {
     }
     :host.even .container .row{
         flex-direction: row-reverse;
+        .img-wrapper {
+            background-image: linear-gradient(to left, transparent 50%, white 50%, white 80%, transparent 80%);
+        }       
     }
 }
 @media (max-width: $lg-screen) {
