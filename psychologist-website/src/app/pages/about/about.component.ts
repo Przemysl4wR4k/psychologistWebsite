@@ -8,6 +8,7 @@ import { PersonCardComponent } from './person-card/person-card.component';
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
+
 export class AboutComponent {
 
 }
