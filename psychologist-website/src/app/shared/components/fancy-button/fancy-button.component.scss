@@ -1,17 +1,17 @@
 .button {
 	
-	--offset: 2.5px;
-	--border-size: .5px;
+	--offset: 5px;
+	--border-size: 1px;
 	
 	display: block;
 	position: relative;
-	padding: 0.375em 0.75em;
+	padding: 0.75em 1.5em;
 	appearance: none;
 	border: 0;
 	background: transparent;
 	color: #e55743;
 	text-transform: uppercase;
-	letter-spacing: .0625em;
+	letter-spacing: .125em;
 	outline: none;
 	cursor: pointer;
 	font-weight: bold;

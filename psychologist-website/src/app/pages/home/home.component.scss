@@ -1,0 +1,37 @@
+@import '../../../scss/variables.scss';
+
+.subsection {
+    align-items: center;
+
+    &#welcome {
+        
+        @media (min-width: $lg-screen) {
+            min-height: calc(100vh - $lg-navbar-height);
+
+        }
+        @media (max-width: $lg-screen) {
+            min-height: calc(100vh - $md-navbar-height);
+        }
+        background-image: url('../../../assets/images/home-bg-desktop.jpeg');
+        background-position: top center;
+        background-size: cover;    
+    }
+
+    .subsection-content-wrapper {
+        padding-left: $lg-indentation-margin;
+        padding-right: $lg-indentation-margin;
+
+        .subsection-placement {
+            flex-basis: 58.3333%;
+            -webkit-box-flex: 0;
+            flex-grow: 0;
+            max-width: 58.3333%;
+
+            .subsection-content {
+                align-items: flex-start;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}

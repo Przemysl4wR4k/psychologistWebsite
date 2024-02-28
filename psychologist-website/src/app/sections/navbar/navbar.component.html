@@ -1,4 +1,4 @@
-<div class="nav-container d-flex justify-content-center mb-4">
+<div class="nav-container d-flex justify-content-center">
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand navbar-side" routerLink="">Paula Poznysz</a>
@@ -21,9 +21,9 @@
                 </li> -->
             </ul>
         </div>
-        <div class="navbar-side d-none d-lg-block float-right">
-            <app-fancy-button></app-fancy-button>
-            <fa-icon [icon]="faSearch"></fa-icon>
+        <div class="navbar-side d-none d-lg-flex align-items-center">
+            <app-fancy-button [buttonText]="'Zaloguj się'"></app-fancy-button>
+            <fa-icon class="ml-3" [icon]="faSearch"></fa-icon>
         </div>
     </div>
     </nav>

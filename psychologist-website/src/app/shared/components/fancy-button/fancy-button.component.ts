@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-fancy-button',
@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './fancy-button.component.scss'
 })
 export class FancyButtonComponent {
+  @Input() buttonText!: string
 
 }
