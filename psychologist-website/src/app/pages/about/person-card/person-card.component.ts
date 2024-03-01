@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-person-card',
@@ -9,5 +9,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
   styleUrl: './person-card.component.scss'
 })
 export class PersonCardComponent {
-
+  @Input() personName!: string;
+  @Input() personTitle!: string;
+  @Input() personDescription!: string;
 }

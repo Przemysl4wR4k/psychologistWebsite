@@ -1,5 +1,12 @@
+@import '../../../scss/variables.scss';
+
 section {
     background-color: rgb(147, 203, 255);
+
+    .section-content {
+        padding-left: $lg-indentation-margin;
+        padding-right: $lg-indentation-margin;
+    }
 }
 
 img {
