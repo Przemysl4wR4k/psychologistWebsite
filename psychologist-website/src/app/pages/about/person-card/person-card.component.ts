@@ -10,9 +10,14 @@ import { FancyButtonComponent } from '../../../shared/components/fancy-button/fa
   styleUrl: './person-card.component.scss'
 })
 export class PersonCardComponent {
+
+  @Input() personPhoto!: string;
   @Input() personName!: string;
   @Input() tags!: string[];
   @Input() personDescription!: string;
-  
-  showWidget = false
+  @Input() link!: string;
+
+  openLink(): void {
+    window.open(this.link, '_blank');
+  }
 }

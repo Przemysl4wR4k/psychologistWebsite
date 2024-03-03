@@ -1,17 +1,37 @@
 <section class="py-5">
     <div>
+        <div class="team-description container d-flex justify-content-between align-items-center">
+            <h2 class="ms-4">
+                Nasz zespół:   
+            </h2>
+            <!-- <div>
+                TODO: Add search bar here
+            </div> -->
+        </div>
         <app-person-card
-            class="odd"
+            class="odd d-flex mt-5"
+            [personPhoto]="'../../../assets/images/paula.jpg'"
             [personName]="'Paula Poznysz'"
             [tags]="['psycholog','seksuolog','psychoterapeuta poznawczo-behawioralny']"
-            [personDescription]="'Jestem psychologiem, seksuologiem i psychoterapeutą poznawczo-behawioralnym. Ukończyłam studia magisterskie na Uniwersytecie Wrocławskim, a także studia podyplomowe z zakresu seksuologii klinicznej na Uniwersytecie Jagiellońskim.'"
+            [personDescription]="'Jestem dyplomowanym psychologiem, seksuologiem, terapeutą w trakcie 4-letniej szkoły Psychoterapii
+            Poznawczo-Behawioarlnej (CBT) oraz członkiem Polskiego Towarzystwa Psychoterapii Poznawczej i
+            Behawioralnej. Doświadczenie zdobyłam w Centrum Neuropsychiatrii NEUROMED oraz w Zakładzie Seksuologii
+            Klinicznej PTP, w poradni zdrowia psychicznego Luxmed HARMONIA, oraz w Centrum Medycznym Ginemedica.'"
+            [link]="'https://www.znanylekarz.pl/paula-poznysz/seksuolog-psycholog/wroclaw'"
             >
         </app-person-card>
         <app-person-card
             class="even d-flex mt-5"
-            [personName]="'Paula Poznysz'"
-            [tags]="['psycholog','seksuolog','psychoterapeuta poznawczo-behawioralny']"
-            [personDescription]="'Jestem psychologiem, seksuologiem i psychoterapeutą poznawczo-behawioralnym. Ukończyłam studia magisterskie na Uniwersytecie Wrocławskim, a także studia podyplomowe z zakresu seksuologii klinicznej na Uniwersytecie Jagiellońskim. W trakcie studiów zdobyłam doświadczenie w pracy z dziećmi, młodzieżą i dorosłymi w ramach praktyk zawodowych oraz wolontariatu. W trakcie studiów zdobyłam doświadczenie w pracy z dziećmi, młodzieżą i dorosłymi w ramach praktyk zawodowych oraz wolontariatu. W trakcie studiów zdobyłam doświadczenie w pracy z dziećmi, młodzieżą i dorosłymi w ramach praktyk zawodowych oraz wolontariatu.'"
+            [personPhoto]="'../../../assets/images/max.jpg'"
+            [personName]="'Max Pawlicki'"
+            [tags]="['psycholog']"
+            [personDescription]="'Jestem mgr psychologii, psychoterapeutą pozytywnym w trakcie certyfikacji, seksuologiem w trakcie szkolenia. Doświadczenie
+            zawodowe zdobyłem we Wrocławskim Centrum Zdrowia SPZOZ, Stowarzyszeniu Ostoja oraz Stowarzyszeniu Eudajmonia.
+            Pracuję z osobami z mniejszości społecznych – osoby z niepełnosprawnościami, spektrum autyzmu, LGBTQA+. Wspieram osoby
+            dorosłe oraz młodzież od 16 roku życia. Specjalizuje się w podejściu mindfulness oraz compassion. Uważność i samowspółczucie
+            otwiera nas na życzliwość do siebie, koi i pociesza. Naucza zarządzania stresem a także określania oraz radzenia sobie z
+            emocjami.'"
+            [link]="'https://www.znanylekarz.pl/max-pawlicki/psycholog/wroclaw'"
             >
         </app-person-card>
     </div>

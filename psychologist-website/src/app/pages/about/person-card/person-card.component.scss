@@ -43,7 +43,7 @@ img {
     .img-wrapper {
         background-image: linear-gradient(to right, transparent 50%, white 50%, white 80%, transparent 80%);
     }
-    :host.even .container .row{
+    :host.even .row{
         flex-direction: row-reverse;
         .img-wrapper {
             background-image: linear-gradient(to left, transparent 50%, white 50%, white 80%, transparent 80%);
