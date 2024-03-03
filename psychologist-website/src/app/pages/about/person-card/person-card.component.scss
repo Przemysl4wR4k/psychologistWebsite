@@ -2,27 +2,9 @@
 
 img {
     border-radius: 50%;
-    width: 60%;
+    width: 70%;
     margin: auto;
-}
-
-
-@media (min-width: $lg-screen) {
-    .img-wrapper {
-        background-image: linear-gradient(to right, transparent 50%, white 50%, white 80%, transparent 80%);
-    }
-    :host.even .container .row{
-        flex-direction: row-reverse;
-        .img-wrapper {
-            background-image: linear-gradient(to left, transparent 50%, white 50%, white 80%, transparent 80%);
-        }       
-    }
-}
-@media (max-width: $lg-screen) {
-    .img-wrapper {
-       background-color: white;
-       border-radius: 2rem 2rem 0 0;
-    }
+    box-shadow: 0 30px 30px -25px rgba(65, 51, 183, 0.25);
 }
 
 .person-name {
@@ -33,7 +15,7 @@ img {
 .card {
     // background-color: white;
     padding: 1.5rem;
-    border-radius: 16px;
+    border-radius: 2rem;
     box-shadow: 0 30px 30px -25px rgba(65, 51, 183, 0.25);
     // max-width: 300px;
     border: none;
@@ -56,3 +38,26 @@ img {
 .person-description {
     color: #a0a0a0
 }
+
+@media (min-width: $lg-screen) {
+    .img-wrapper {
+        background-image: linear-gradient(to right, transparent 50%, white 50%, white 80%, transparent 80%);
+    }
+    :host.even .container .row{
+        flex-direction: row-reverse;
+        .img-wrapper {
+            background-image: linear-gradient(to left, transparent 50%, white 50%, white 80%, transparent 80%);
+        }       
+    }
+}
+@media (max-width: $lg-screen) {
+    .img-wrapper {
+       background-color: white;
+       border-radius: 2rem 2rem 0 0;
+    }
+
+    .card {
+        border-radius: 0 0 2rem 2rem;
+    }
+}
+
