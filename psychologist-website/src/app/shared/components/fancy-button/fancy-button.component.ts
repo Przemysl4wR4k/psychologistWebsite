@@ -11,6 +11,7 @@ import { Component, Input } from '@angular/core';
 export class FancyButtonComponent {
   @Input() buttonText!: string
   @Input() buttonSize: ButtonSize = ButtonSize.L
+  @Input() disabled: boolean = false
 
   protected getStyle() {
     switch (this.buttonSize) {

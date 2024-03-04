@@ -4,22 +4,28 @@
               <div class="card">
                   <div class="card-body">
                       <h3 class="card-title text-center mb-3">Skontaktuj się z nami</h3>
-                      <form>
-                          <div class="mb-3">
-                              <label for="email" class="form-label">Email</label>
-                              <input type="email" class="form-control" id="email">
-                          </div>
-                          <div class="mb-3">
-                              <label for="subject" class="form-label">Tytuł</label>
-                              <input type="text" class="form-control" id="subject">
-                          </div>
-                          <div class="mb-3">
-                              <label for="message" class="form-label">Wiadomość</label>
-                              <textarea class="form-control" id="message" rows="1"></textarea>
-                          </div>
-                          <!-- <button type="submit" class="btn btn-primary">Wyślij</button> -->
-                          <app-fancy-button [buttonText]="'Wyślij'" [buttonSize]="buttonSize.M"></app-fancy-button>
-                        </form>
+                      <form [formGroup]="contactForm">
+                        <div class="mb-3" [ngClass]="{ 'input-error': contactForm.get('email')?.invalid && contactForm.get('email')?.touched && !emailFocused }">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" formControlName="email" (focus)="emailFocused = true" (blur)="emailFocused = false">
+                            <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched && !emailFocused" class="text-danger">Niepoprawny adres email</div>
+                        </div>
+                        <div class="mb-3" [ngClass]="{ 'input-error': contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched && !subjectFocused }">
+                            <label for="subject" class="form-label">Tytuł</label>
+                            <input type="text" class="form-control" id="subject" formControlName="subject" (focus)="subjectFocused = true" (blur)="subjectFocused = false">
+                            <div *ngIf="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched && !subjectFocused" class="text-danger">To pole jest wymagane</div>
+                        </div>
+                        <div class="mb-3" [ngClass]="{ 'input-error': contactForm.get('message')?.invalid && contactForm.get('message')?.touched && !messageFocused }">
+                            <label for="message" class="form-label">Wiadomość</label>
+                            <textarea class="form-control" id="message" rows="1" formControlName="message" (focus)="messageFocused = true" (blur)="messageFocused = false"></textarea>
+                            <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched && !messageFocused" class="text-danger">To pole jest wymagane</div>
+                        </div>                   
+                        <app-fancy-button
+                            [buttonText]="'Wyślij'"
+                            [buttonSize]="buttonSize.M"
+                            [disabled]="!contactForm.valid">
+                        </app-fancy-button>
+                    </form>
                   </div>
               </div>
   </div>
