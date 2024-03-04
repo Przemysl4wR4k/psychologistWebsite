@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLocationDot, faPhone, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import { FooterItemComponent } from './footer-item/footer-item.component';
+import { ContactType, FooterItemComponent } from './footer-item/footer-item.component';
 
 @Component({
   selector: 'app-footer',
@@ -12,7 +12,8 @@ import { FooterItemComponent } from './footer-item/footer-item.component';
 })
 
 export class FooterComponent {
-  faLocationDot = faLocationDot;
-  faPhone = faPhone;
-  faPaperPlane = faPaperPlane;
+  faLocationDot = faLocationDot
+  faPhone = faPhone
+  faPaperPlane = faPaperPlane
+  contactTypes = ContactType
 }
