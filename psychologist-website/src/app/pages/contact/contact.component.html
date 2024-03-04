@@ -1,32 +1,54 @@
 <section>
-  <iframe width="100%" height="100%" frameborder="0" marginwidth="0" title="map" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=Plac%20Teatralny%203,%2050-051%20Wroc%C5%82aw&ie=UTF8&t=&z=15&iwloc=B&output=embed" style="filter: grayscale(1) contrast(1.2) opacity(0.4);"></iframe>
-  <div class="container-lg d-flex align-items-center justify-content-center justify-content-lg-end">
-              <div class="card">
-                  <div class="card-body">
-                      <h3 class="card-title text-center mb-3">Skontaktuj się z nami</h3>
-                      <form [formGroup]="contactForm">
-                        <div class="mb-3" [ngClass]="{ 'input-error': contactForm.get('email')?.invalid && contactForm.get('email')?.touched && !emailFocused }">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" formControlName="email" (focus)="emailFocused = true" (blur)="emailFocused = false">
-                            <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched && !emailFocused" class="text-danger">Niepoprawny adres email</div>
-                        </div>
-                        <div class="mb-3" [ngClass]="{ 'input-error': contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched && !subjectFocused }">
-                            <label for="subject" class="form-label">Tytuł</label>
-                            <input type="text" class="form-control" id="subject" formControlName="subject" (focus)="subjectFocused = true" (blur)="subjectFocused = false">
-                            <div *ngIf="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched && !subjectFocused" class="text-danger">To pole jest wymagane</div>
-                        </div>
-                        <div class="mb-3" [ngClass]="{ 'input-error': contactForm.get('message')?.invalid && contactForm.get('message')?.touched && !messageFocused }">
-                            <label for="message" class="form-label">Wiadomość</label>
-                            <textarea class="form-control" id="message" rows="1" formControlName="message" (focus)="messageFocused = true" (blur)="messageFocused = false"></textarea>
-                            <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched && !messageFocused" class="text-danger">To pole jest wymagane</div>
-                        </div>                   
-                        <app-fancy-button
-                            [buttonText]="'Wyślij'"
-                            [buttonSize]="buttonSize.M"
-                            [disabled]="!contactForm.valid">
-                        </app-fancy-button>
-                    </form>
-                  </div>
-              </div>
-  </div>
-</section>
+    <iframe width="100%" height="100%" frameborder="0" marginwidth="0" title="map" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=Plac%20Teatralny%203,%2050-051%20Wroc%C5%82aw&ie=UTF8&t=&z=15&iwloc=B&output=embed" style="filter: grayscale(1) contrast(1.2) opacity(0.4);"></iframe>
+    <div class="container-lg d-flex align-items-center justify-content-center justify-content-lg-end">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-3">Skontaktuj się z nami</h3>
+          <form [formGroup]="contactForm" action="https://formsubmit.co/przemyslawrak8@gmail.com" method="POST" (ngSubmit)="onSubmit()">
+            <div class="mb-3" [ngClass]="{ 'input-error': contactForm.get('email')?.invalid && contactForm.get('email')?.touched && !emailFocused }">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                name="email"
+                (focus)="emailFocused = true"
+                (blur)="emailFocused = false">
+              <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched && !emailFocused" class="text-danger">Niepoprawny adres email</div>
+            </div>
+            <div class="mb-3" [ngClass]="{ 'input-error': contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched && !subjectFocused }">
+              <label for="subject" class="form-label">Tytuł</label>
+              <input
+                type="text"
+                class="form-control"
+                id="subject"
+                formControlName="subject"
+                name="subject"
+                (focus)="subjectFocused = true"
+                (blur)="subjectFocused = false">
+              <div *ngIf="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched && !subjectFocused" class="text-danger">To pole jest wymagane</div>
+            </div>
+            <div class="mb-3" [ngClass]="{ 'input-error': contactForm.get('message')?.invalid && contactForm.get('message')?.touched && !messageFocused }">
+              <label for="message" class="form-label">Wiadomość</label>
+              <textarea
+                class="form-control"
+                id="message" rows="2"
+                formControlName="message"
+                name="message"
+                (focus)="messageFocused = true"
+                (blur)="messageFocused = false">
+            </textarea>
+              <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched && !messageFocused" class="text-danger">To pole jest wymagane</div>
+            </div>           
+            <app-fancy-button
+                type="submit"
+                [buttonText]="'Wyślij'"
+                [buttonSize]="buttonSize.M"
+                [disabled]="!contactForm.valid">
+            </app-fancy-button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
