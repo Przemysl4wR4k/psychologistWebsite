@@ -14,7 +14,7 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 export class FooterItemComponent {
   @Input() icon!: IconDefinition;
   @Input() contactType!: ContactType;
-  @Input() contactInfo!: string;
+  @Input() contactInfo: string | undefined;
 
   contactTypes = ContactType
 }
