@@ -10,13 +10,48 @@
         padding-left: $lg-indentation-margin;
         padding-right: $lg-indentation-margin;
     }
+    
     .navbar-side {
         min-width: 12rem;
     }
+    
     .navbar-collapse {
         justify-content: center;
         ul {
             gap: 2rem
+        }
+        transition: height 0s;
+        // transition
+    }
+    
+    .nav-item {
+        position: relative;
+        overflow: hidden;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: #6558d3; // Kolor border bottom
+            transition: width 0.3s ease-in-out; // Animacja na zmianę szerokości
+        }
+
+        &::before {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &::after {
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        &:hover::before,
+        &:hover::after {
+            width: 90%; // Szerokość na hover (50% - odjęta szerokość marginesu)
         }
     }
   }
