@@ -1,3 +1,7 @@
+This project is still in the development phase.
+Styles and functionalities have been determined together with the person who will use the website in the future.
+At this point, the work is mainly focused on all views and full responsiveness.
+
 # PsychologistWebsite
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
