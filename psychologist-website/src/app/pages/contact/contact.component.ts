@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FancyButtonComponent, ButtonSize } from '../../shared/components/fancy-button/fancy-button.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Subject, catchError, takeUntil, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
@@ -12,9 +13,10 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
   styleUrl: './contact.component.scss',
   host: {ngSkipHydration: 'true'}
 })
-export class ContactComponent {
+export class ContactComponent implements OnDestroy{
   buttonSize = ButtonSize
   contactForm: FormGroup;
+  destroy$ = new Subject<void>();
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.contactForm = this.formBuilder.group({
@@ -32,7 +34,12 @@ export class ContactComponent {
       });
 
       this.http.post(url, formData, { headers })
-        .subscribe(
+        .pipe(
+          takeUntil(this.destroy$),
+          catchError((error: HttpErrorResponse) => {
+            return throwError(() => error)
+          })
+        ).subscribe(
           (response) => {
             console.log('Response:', response);
             // Tutaj możesz obsłużyć odpowiedź serwera, np. wyświetlić komunikat potwierdzający wysłanie formularza
@@ -47,4 +54,8 @@ export class ContactComponent {
   emailFocused: boolean = false
   subjectFocused: boolean = false
   messageFocused: boolean = false
+
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
 }
