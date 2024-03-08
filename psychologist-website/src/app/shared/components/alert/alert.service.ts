@@ -1,17 +1,24 @@
-
 export class AlertService {
-  alerts: Alert[] = [];
+  readonly alerts: Alert[] = []
+  timeout = 5000
+
   constructor() { }
-  addAlert(alert: Alert) {
-    this.alerts.push(alert);
+
+  private showAlert(message: string, type: AlertType, timeout: number) {
+    this.alerts.push({ message, type, timeout })
   }
-  removeAlert(alert: Alert) {
-    this.alerts = this.alerts.filter(a => a !== alert);
+
+  showSuccess(message: string, timeout: number = this.timeout) {
+    this.showAlert(message, AlertType.Success, timeout)
+  }
+  
+  showErrorMessage(message: string, timeout: number = this.timeout) {
+    this.showAlert(message, AlertType.Danger, timeout)
   }
 }
 
 
-export enum AlertType {
+enum AlertType {
     Success = 'success',
     Info = 'info',
     Warning = 'warning',
