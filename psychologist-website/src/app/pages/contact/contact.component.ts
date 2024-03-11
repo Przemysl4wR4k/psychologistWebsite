@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FancyButtonComponent, ButtonSize } from '../../shared/components/fancy-button/fancy-button.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -15,7 +15,7 @@ import { AlertService } from '../../shared/components/alert/alert.service';
   host: {ngSkipHydration: 'true'},
   providers: [AlertService]
 })
-export class ContactComponent implements OnInit, OnDestroy{
+export class ContactComponent implements OnDestroy{
   buttonSize = ButtonSize
   contactForm: FormGroup;
   destroy$ = new Subject<void>();
@@ -32,11 +32,6 @@ export class ContactComponent implements OnInit, OnDestroy{
     });
   }
 
-  ngOnInit(): void {
-    this.alertService.showSuccess('This is a success message');
-    this.alertService.showSuccess('This is a success message');
-  }
-
   onSubmit() {
       const formData = this.contactForm.value;
       const url = 'https://formspree.io/f/xleqnqwz';
@@ -50,16 +45,7 @@ export class ContactComponent implements OnInit, OnDestroy{
           catchError((error: HttpErrorResponse) => {
             return throwError(() => error)
           })
-        ).subscribe(
-          (response) => {
-            console.log('Response:', response);
-            // Tutaj możesz obsłużyć odpowiedź serwera, np. wyświetlić komunikat potwierdzający wysłanie formularza
-          },
-          (error) => {
-            console.error('Error:', error);
-            // Obsługa błędu, np. wyświetlenie komunikatu o niepowodzeniu wysłania formularza
-          }
-        );
+        ).subscribe()
   }
 
   showAlert() {

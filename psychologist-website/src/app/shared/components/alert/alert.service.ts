@@ -5,7 +5,7 @@ export class AlertService {
   static staticAlerts: Alert[] = []
   private readonly alerts: BehaviorSubject<Alert[]> = new BehaviorSubject<Alert[]>([])
   readonly alerts$: Observable<Alert[]> = this.alerts.asObservable()
-  timeout = 5000
+  timeout = 6000
 
   constructor() { 
     console.log('AlertService created')
