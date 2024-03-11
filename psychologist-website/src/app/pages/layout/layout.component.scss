@@ -1,7 +1,8 @@
 app-alert {
-    position: absolute;
+    position: fixed;
     top: 3rem;
     right: 2rem;
+    margin-left: 2rem;
     max-width: 40rem;
     z-index: 9999;
 }
