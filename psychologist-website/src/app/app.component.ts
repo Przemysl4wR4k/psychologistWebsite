@@ -1,15 +1,11 @@
 import { Component, Inject, Renderer2 } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from './sections/footer/footer.component';
-import { NavbarComponent } from './sections/navbar/navbar.component';
-import { HomeComponent } from './pages/home/home.component';
-import { AboutComponent } from './pages/about/about.component';
 import { DOCUMENT } from '@angular/common';
+import { LayoutComponent } from './pages/layout/layout.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FooterComponent, NavbarComponent, RouterOutlet, HomeComponent, AboutComponent],
+  imports: [LayoutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

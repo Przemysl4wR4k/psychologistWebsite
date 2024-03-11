@@ -1,9 +1,10 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FancyButtonComponent, ButtonSize } from '../../shared/components/fancy-button/fancy-button.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Subject, catchError, takeUntil, throwError } from 'rxjs';
+import { AlertService } from '../../shared/components/alert/alert.service';
 
 @Component({
   selector: 'app-contact',
@@ -11,19 +12,29 @@ import { Subject, catchError, takeUntil, throwError } from 'rxjs';
   imports: [CommonModule, FancyButtonComponent, HttpClientModule, ReactiveFormsModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
-  host: {ngSkipHydration: 'true'}
+  host: {ngSkipHydration: 'true'},
+  providers: [AlertService]
 })
-export class ContactComponent implements OnDestroy{
+export class ContactComponent implements OnInit, OnDestroy{
   buttonSize = ButtonSize
   contactForm: FormGroup;
   destroy$ = new Subject<void>();
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  emailFocused: boolean = false
+  subjectFocused: boolean = false
+  messageFocused: boolean = false
+
+  constructor(private alertService: AlertService, private formBuilder: FormBuilder, private http: HttpClient) {
     this.contactForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       subject: ['', Validators.required],
       message: ['', Validators.required]
     });
+  }
+
+  ngOnInit(): void {
+    this.alertService.showSuccess('This is a success message');
+    this.alertService.showSuccess('This is a success message');
   }
 
   onSubmit() {
@@ -51,11 +62,11 @@ export class ContactComponent implements OnDestroy{
         );
   }
 
-  emailFocused: boolean = false
-  subjectFocused: boolean = false
-  messageFocused: boolean = false
+  showAlert() {
+    this.alertService.showSuccess('This is a success message');
+  }
 
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
 }
