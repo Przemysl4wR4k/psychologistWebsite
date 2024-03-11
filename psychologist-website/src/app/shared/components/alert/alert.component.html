@@ -1,7 +1,5 @@
-{{ alertService.basicAlerts.length }}
-{{ (alertService.alerts$ | async)?.length}}
-<bs-alert *ngFor="let alert of (alertService.alerts$ | async)"
-    class="animated fade-in fade-out"
+<bs-alert *ngFor="let alert of alertService.alerts"
+    class="animated"
     [type]="alert.type"
     [dismissOnTimeout]="alert.timeout">    
     <strong [innerHTML]="alert.message"></strong>

@@ -3,7 +3,7 @@ import { FancyButtonComponent, ButtonSize } from '../../shared/components/fancy-
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Subject, catchError, takeUntil, throwError } from 'rxjs';
+import { Subject, catchError, takeUntil, tap, throwError } from 'rxjs';
 import { AlertService } from '../../shared/components/alert/alert.service';
 
 @Component({
@@ -13,7 +13,6 @@ import { AlertService } from '../../shared/components/alert/alert.service';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
   host: {ngSkipHydration: 'true'},
-  providers: [AlertService]
 })
 export class ContactComponent implements OnDestroy{
   buttonSize = ButtonSize
@@ -41,18 +40,20 @@ export class ContactComponent implements OnDestroy{
 
       this.http.post(url, formData, { headers })
         .pipe(
+          tap(() => {
+            this.alertService.showSuccess('Wiadomość została wysłana pomyślnie.')
+            this.contactForm.reset()
+          }),
           takeUntil(this.destroy$),
           catchError((error: HttpErrorResponse) => {
+            this.alertService.showErrorMessage('Podczas wysyłania wiadomości wystąpił błąd. Spróbuj ponownie później.')
             return throwError(() => error)
           })
         ).subscribe()
   }
 
-  showAlert() {
-    this.alertService.showSuccess('This is a success message');
-  }
-
   ngOnDestroy(): void {
-    // throw new Error('Method not implemented.');
+    this.destroy$.next()
+    this.destroy$.complete()
   }
 }

@@ -7,15 +7,11 @@ import { CommonModule } from '@angular/common';
   selector: 'app-alert',
   templateUrl: './alert.component.html',
   standalone: true,
-  imports: [AlertModule, CommonModule],
-  providers: [AlertService]
+  imports: [AlertModule, CommonModule]
 })
 
 export class AlertComponent {
-  staticAlerts = AlertService.staticAlerts
-
-  constructor(public alertService: AlertService) {
-  
+  constructor(protected alertService: AlertService) {
   }
 }
 

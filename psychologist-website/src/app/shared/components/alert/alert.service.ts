@@ -1,26 +1,19 @@
+import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class AlertService {
-  basicAlerts: Alert[] = []
-  static staticAlerts: Alert[] = []
-  private readonly alerts: BehaviorSubject<Alert[]> = new BehaviorSubject<Alert[]>([])
-  readonly alerts$: Observable<Alert[]> = this.alerts.asObservable()
+  alerts: Alert[] = []
   timeout = 6000
 
   constructor() { 
     console.log('AlertService created')
   }
-  
-  getAlerts() {
-    return this.alerts.getValue();
-  }
 
   private showAlert(message: string, type: AlertType, timeout: number) {
-    const newAlerts = [...this.alerts.getValue(), { message, type, timeout }]
-    this.alerts.next(newAlerts);
-    // console.log(this.alerts.getValue())
-    AlertService.staticAlerts.push({ message, type, timeout })
-    this.basicAlerts.push({ message, type, timeout })
+    this.alerts.push({ message, type, timeout })
   }
 
   showSuccess(message: string, timeout: number = this.timeout) {
