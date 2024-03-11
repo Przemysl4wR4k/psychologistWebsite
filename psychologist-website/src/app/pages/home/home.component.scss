@@ -5,18 +5,18 @@
 
     &#welcome {
         
-        background-color: rgb(162, 147, 255);
+        background-color: #ead3d0;
         background-repeat: no-repeat;
         @media (min-width: $lg-screen) {
             height: calc(100vh - $lg-navbar-height);
             max-height: 664px;
-            background-image: url('../../../assets/images/home-bg-desktop.jpeg');
+            // background-image: url('../../../assets/images/home-bg-desktop.jpeg');
             background-position: top center;
             background-size: 1600px;
         }
         @media (max-width: $lg-screen) {
             height: calc(100vh - $md-navbar-height);
-            background-image: url('../../../assets/images/home-bg-mobile.jpeg');
+            // background-image: url('../../../assets/images/home-bg-mobile.jpeg');
             background-position: right -120px bottom -60px;
             background-size: 1200px;
         }
