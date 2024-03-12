@@ -5,20 +5,19 @@
 
     &#welcome {
         
-        background-color: #ead3d0;
+        background-color: #ffe1d8;
         background-repeat: no-repeat;
+        background-image: url('../../../assets/images/woman.png');
         @media (min-width: $lg-screen) {
             height: calc(100vh - $lg-navbar-height);
             max-height: 664px;
-            // background-image: url('../../../assets/images/home-bg-desktop.jpeg');
-            background-position: top center;
-            background-size: 1600px;
+            background-position: top 70px right;
+            background-size: contain;
         }
         @media (max-width: $lg-screen) {
             height: calc(100vh - $md-navbar-height);
-            // background-image: url('../../../assets/images/home-bg-mobile.jpeg');
-            background-position: right -120px bottom -60px;
-            background-size: 1200px;
+            background-position: bottom center;
+            background-size: contain;
         }
     }
 
