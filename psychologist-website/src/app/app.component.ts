@@ -24,6 +24,7 @@ export class AppComponent implements OnDestroy {
     this.loadScript()
     this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        this.reloadScript()
         window.scrollTo(0, 0)
       }
     })
@@ -34,6 +35,12 @@ export class AppComponent implements OnDestroy {
     script.type = 'text/javascript'
     script.src = '//platform.docplanner.com/js/widget.js'
     this.renderer.appendChild(this.document.head, script)
+  }
+  
+  reloadScript(): void {
+    const existingScripts = this.document.querySelectorAll('script[src="//platform.docplanner.com/js/widget.js"]')
+    existingScripts.forEach(script => script.remove())
+    this.loadScript()
   }
 
   ngOnDestroy(): void {
