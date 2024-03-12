@@ -1,0 +1,21 @@
+@import '../../../scss/colors.scss';
+
+section {
+    background-color: $my-light-blue;
+}
+
+img {
+    border-radius: 50%;
+    width: 30%;
+    box-shadow: 0 30px 30px -25px rgba(65, 51, 183, 0.25);
+}
+
+.card {
+    // background-color: white;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    box-shadow: 0 30px 30px -25px rgba(65, 51, 183, 0.25);
+    // max-width: 300px;
+    border: none;
+
+}
