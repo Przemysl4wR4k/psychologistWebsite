@@ -1,7 +1,8 @@
 @import '../../../scss/variables.scss';
+@import '../../../scss/colors.scss';
 
 section {
-    background-color: #bcb9d0;
+    background-color: $my-light-blue;
 }
 @media (min-width: $lg-screen) {
     section {

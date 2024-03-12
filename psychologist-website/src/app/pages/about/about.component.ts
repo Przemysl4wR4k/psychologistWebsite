@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { PersonCardComponent } from './person-card/person-card.component';
 
 @Component({
@@ -10,5 +10,4 @@ import { PersonCardComponent } from './person-card/person-card.component';
 })
 
 export class AboutComponent {
-
 }
