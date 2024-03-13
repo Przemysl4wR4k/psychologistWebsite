@@ -5,9 +5,25 @@
 
     &#welcome {
         
-        background-color: #ffe1d8;
         background-repeat: no-repeat;
-        background-image: url('../../../assets/images/woman.png');
+        
+        &.spring {
+            background-color: #ffe1d8;
+            background-image: url('../../../assets/images/spring.png');
+        }
+        &.summer {
+            background-color: #fcf7e8;
+            background-image: url('../../../assets/images/summer.png');
+        }
+        &.autumn {
+            background-color: #f5f5f5;
+            background-image: url('../../../assets/images/autumn.png');
+        }
+        &.winter {
+            background-color: #af4a4a;
+            background-image: url('../../../assets/images/winter.png');
+        }
+
         @media (min-width: $lg-screen) {
             height: calc(100vh - $lg-navbar-height);
             max-height: 664px;
