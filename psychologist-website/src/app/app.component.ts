@@ -21,26 +21,11 @@ export class AppComponent implements OnDestroy {
     private destroy$ = new Subject<void>()
 
   ngOnInit(): void {
-    this.loadScript()
     this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.reloadScript()
         window.scrollTo(0, 0)
       }
     })
-  }
-
-  loadScript() {
-    const script = this.renderer.createElement('script')
-    script.type = 'text/javascript'
-    script.src = '//platform.docplanner.com/js/widget.js'
-    this.renderer.appendChild(this.document.head, script)
-  }
-  
-  reloadScript(): void {
-    const existingScripts = this.document.querySelectorAll('script[src="//platform.docplanner.com/js/widget.js"]')
-    existingScripts.forEach(script => script.remove())
-    this.loadScript()
   }
 
   ngOnDestroy(): void {
