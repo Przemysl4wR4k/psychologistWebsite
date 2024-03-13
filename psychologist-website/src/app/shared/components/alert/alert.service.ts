@@ -9,7 +9,6 @@ export class AlertService {
   timeout = 6000
 
   constructor() { 
-    console.log('AlertService created')
   }
 
   private showAlert(message: string, type: AlertType, timeout: number) {
