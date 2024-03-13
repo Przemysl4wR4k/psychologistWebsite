@@ -22,7 +22,7 @@ export class AppComponent implements OnDestroy {
 
   ngOnInit(): void {
     this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event) => {
-      if (event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd && typeof window !== 'undefined') {
         window.scrollTo(0, 0)
       }
     })
