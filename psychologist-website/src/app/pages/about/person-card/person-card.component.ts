@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FancyButtonComponent } from '../../../shared/components/fancy-button/fancy-button.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-person-card',
@@ -18,14 +17,10 @@ export class PersonCardComponent {
   @Input() personDescription!: string;
   @Input() link!: string;
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
   openLink(): void {
     window.open(this.link, '_blank');
   }
-  redirectToPersonPage() {
-    this.router.navigate(['/about', this.personName]);
-  }
-
 }
