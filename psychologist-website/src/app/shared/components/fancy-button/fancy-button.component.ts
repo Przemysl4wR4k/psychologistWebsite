@@ -12,6 +12,7 @@ export class FancyButtonComponent {
   @Input() buttonText!: string
   @Input() buttonSize: ButtonSize = ButtonSize.L
   @Input() disabled: boolean = false
+  @Input() color: string = '#e55743'
 
   protected getStyle() {
     switch (this.buttonSize) {
@@ -22,21 +23,24 @@ export class FancyButtonComponent {
           '--offset': '2px',
           '-border-size': '1px',
           'padding': '0.5em 1em',
-          'letter-spacing': '.0625em'
+          'letter-spacing': '.0625em',
+          'color': this.color,
         }
       case ButtonSize.L:
         return {
           '--offset': '5px',
           '-border-size': '1px',
           'padding': '0.75em 1.5em',
-          'letter-spacing': '.125em'
+          'letter-spacing': '.125em',
+          'color': this.color,
         }
       case ButtonSize.XL:
         return {
           '--offset': '10px',
           '-border-size': '2px',
           'padding': '1em 2em',
-          'letter-spacing': '.25em'
+          'letter-spacing': '.25em',
+          'color': this.color,
         }
     }      
   }

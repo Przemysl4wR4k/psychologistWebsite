@@ -1,4 +1,5 @@
 @import '../../../scss/variables.scss';
+@import '../../../scss/colors.scss';
 
 .subsection {
     align-items: center;
@@ -38,6 +39,9 @@
             }
         }
         &.winter {
+            span {
+                color: $palette-light-gray;
+            }
             background-color: #af4a4a;
             & .subsection-img {
                 background-image: url('../../../assets/images/winter.png');
@@ -68,45 +72,30 @@
                 background-position: top 5rem right 5%;
                 background-image: url('../../../assets/images/winter.png');
             }
+
+            .subsection-content-wrapper {
+                max-width: 1440px;
+                margin: 0 auto;
+                padding-left: $lg-indentation-margin;
+                padding-right: $lg-indentation-margin;
+        
+                .subsection-placement {
+                    flex-basis: 58.3333%;
+                    -webkit-box-flex: 0;
+                    flex-grow: 0;
+                    max-width: 58.3333%;
+                }
+            }
     
         }
         @media (max-width: $lg-screen) {
             height: calc(100vh - $md-navbar-height);
             background-position: bottom center;
             background-size: contain;
-        }
-    }
-
-    @media (min-width: $lg-screen) {
-        .subsection-content-wrapper {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding-left: $lg-indentation-margin;
-            padding-right: $lg-indentation-margin;
-    
-            .subsection-placement {
-                flex-basis: 58.3333%;
-                -webkit-box-flex: 0;
-                flex-grow: 0;
-                max-width: 58.3333%;
-    
-                .subsection-content {
-                    align-items: flex-start;
-                    flex-direction: column;
-
-                    .content-description {
-                        margin-top: 3rem;
-                        margin-bottom: 3rem;
-                    }
-                }
+            
+            .subsection-content-wrapper {
+                height: 100%;
             }
-        }
-    }
-    @media (max-width: $lg-screen) {
-        .subsection-content-wrapper {
-            padding-left: 1rem;
-            padding-right: 1rem;
-            height: 100%;
         }
     }
 }
