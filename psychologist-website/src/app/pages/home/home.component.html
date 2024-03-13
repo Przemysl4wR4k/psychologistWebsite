@@ -1,17 +1,18 @@
 <section>
-    <div id="welcome" class="subsection d-flex spring">
-        <div class="subsection-content-wrapper">
+    <div id="welcome" class="subsection d-flex" [class]="getSeason()">
+        <div class="subsection-content-wrapper d-flex flex-row">
             <div class="subsection-placement">
-                <div class="d-flex flex-column subsection-content">
-                    <h1 class="content-title text-center">
-                        Pomiędzy bodźcem i reakcją jest przestrzeń: 
+                <div class="d-flex flex-column subsection-content h-100">
+                    <h1 class="content-title text-center pt-5 pt-lg-none">
+                        <span>Pomiędzy bodźcem i reakcją jest przestrzeń:</span> 
                         <br>
-                        w tej przestrzeni leży wolność i moc wyboru naszej odpowiedzi.
+                        <span>w tej przestrzeni leży wolność i moc wyboru naszej odpowiedzi.</span>
                     </h1>
-                    <span class="content-description w-100 text-center">
+                    <span class="content-description align-self-center text-center">
                         ~ Viktor E. Frankl
                     </span>
-                    <app-fancy-button class="align-self-center"  routerLink="/about" [buttonText]="'Umów się'"></app-fancy-button>
+                    <div class="d-block d-lg-none subsection-img h-100"></div>
+                    <app-fancy-button class="align-self-center mb-4 mb-lg-0"  routerLink="/about" [buttonText]="'Umów się'"></app-fancy-button>
                 </div>
             </div>
         </div>
