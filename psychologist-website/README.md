@@ -1,8 +1,10 @@
 This project is still in the development phase.
 At this point static page is almost ready. The code still hasnt been cleaned. It probably needs some optimization in 
-some places. Scss files could should have the same approach
+some places. Scss files should have more unified structure.
+Next I'll focus on adding BaaS, most probably firebase
+
 Styles and functionalities have been determined together with the person who will use the website in the future.
-At this point, the work is mainly focused on all views and full responsiveness.
+
 
 # PsychologistWebsite
 
