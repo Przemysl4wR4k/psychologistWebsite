@@ -13,11 +13,8 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class AppComponent implements OnDestroy {
   title = 'psychologist-website';
-  // Znany lekarz widget
   constructor(
-    private renderer: Renderer2,
-    private router: Router,
-    @Inject(DOCUMENT) private document: Document) {}
+    private router: Router) {}
     private destroy$ = new Subject<void>()
 
   ngOnInit(): void {
