@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLocationDot, faPhone, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import { ContactType, FooterItemComponent } from './footer-item/footer-item.component';
-import { Firestore, doc, getDoc } from '@angular/fire/firestore';
-import { collection } from 'firebase/firestore';
+import { FooterItemComponent } from './footer-item/footer-item.component';
+import { Observable, Subject, catchError, takeUntil, tap, throwError } from 'rxjs';
+import { ContactData, ContactType, FooterService } from './footer.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AlertService } from '../../shared/components/alert/alert.service';
 
 @Component({
   selector: 'app-footer',
@@ -13,30 +15,31 @@ import { collection } from 'firebase/firestore';
   styleUrl: './footer.component.scss'
 })
 
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnDestroy {
   faLocationDot = faLocationDot
   faPhone = faPhone
   faPaperPlane = faPaperPlane
   contactTypes = ContactType
-
-  constructor(private firestore: Firestore) {
-
+  contactInfo$!: Observable<any>
+  destroy$ = new Subject<void>()
+  
+  constructor(private alertService: AlertService, private footerService: FooterService) {
   }
 
   ngOnInit(): void {
-      this.getData()
+    this.footerService.getContactData()
+      .pipe(
+        tap((contactData: ContactData[]) => console.log(contactData)),
+        catchError((err: HttpErrorResponse) => {
+          this.alertService.showErrorMessage(err.error.message)
+          return throwError(() => err)
+        }),
+        takeUntil(this.destroy$)
+      ).subscribe()
   }
-  async getData(){
-    const contactDocRef = doc(this.firestore, 'collection/contact');
-    try {
-      const docSnap = await getDoc(contactDocRef);
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-      } else {
-        console.log("No such document!");
-      }
-    } catch (error) {
-      console.error("Error getting document:", error);
-    }
+
+  ngOnDestroy(): void {
+      this.destroy$.next()
+      this.destroy$.complete()
   }
 }

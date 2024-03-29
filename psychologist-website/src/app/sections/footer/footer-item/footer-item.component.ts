@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { ContactType } from '../footer.service';
 
 @Component({
   selector: 'app-footer-item',
@@ -19,8 +20,4 @@ export class FooterItemComponent {
   contactTypes = ContactType
 }
 
-export enum ContactType {
-  PHONE = 'Telefon',
-  EMAIL = 'Email',
-  ADDRESS = 'Adres'
-}
+

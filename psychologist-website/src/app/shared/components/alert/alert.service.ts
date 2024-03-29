@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AlertService {
   alerts: Alert[] = []
-  timeout = 6000
+  private timeout = 6000
 
   constructor() { 
   }
