@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class AlertService {
   constructor() { 
   }
 
-  private showAlert(message: string, type: AlertType, timeout: number) {
+  private showAlert(message: HttpErrorResponse | string, type: AlertType, timeout: number) {
     this.alerts.push({ message, type, timeout })
   }
 
@@ -18,7 +19,7 @@ export class AlertService {
     this.showAlert(message, AlertType.Success, timeout);
   }
   
-  showErrorMessage(message: string, timeout: number = this.timeout) {
+  showErrorMessage(message: HttpErrorResponse | string, timeout: number = this.timeout) {
     this.showAlert(message, AlertType.Danger, timeout);
   }
 }
@@ -33,6 +34,6 @@ enum AlertType {
   
 export interface Alert {
     type: AlertType
-    message: string
+    message: HttpErrorResponse | string
     timeout: number
 }
