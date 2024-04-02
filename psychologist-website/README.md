@@ -1,7 +1,7 @@
 This project is still in the development phase.
-At this point static page is almost ready. The code still hasnt been cleaned. It probably needs some optimization in 
+The code still hasnt been cleaned. It probably needs some optimization in 
 some places. Scss files should have more unified structure.
-Next I'll focus on adding BaaS, most probably firebase
+Resigned from creating model files. Maybe will implement one common model file later.
 
 Styles and functionalities have been determined together with the person who will use the website in the future.
 
