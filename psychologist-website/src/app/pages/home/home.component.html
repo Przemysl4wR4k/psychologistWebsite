@@ -1,15 +1,12 @@
 <section>
     <div id="welcome" class="subsection d-flex" [class]="getSeason()">
-        <div class="subsection-content-wrapper d-flex flex-row px-4">
+        <div *ngIf="quote" class="subsection-content-wrapper d-flex flex-row px-4">
             <div class="subsection-placement">
                 <div class="d-flex flex-column subsection-content h-100">
-                    <h1 class="content-title text-center pt-5 pt-lg-none">
-                        <span>Pomiędzy bodźcem i reakcją jest przestrzeń:</span> 
-                        <br>
-                        <span>w tej przestrzeni leży wolność i moc wyboru naszej odpowiedzi.</span>
+                    <h1 class="content-title text-center pt-5 pt-lg-none" [innerHTML]="quote.quote">
                     </h1>
                     <span class="content-description align-self-center text-center my-lg-5">
-                        ~ Viktor E. Frankl
+                        ~ {{quote.author}}
                     </span>
                     <div class="d-block d-lg-none subsection-img h-100"></div>
                     <app-fancy-button 
