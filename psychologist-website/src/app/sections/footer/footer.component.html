@@ -5,7 +5,7 @@
                 @for (contact of contactData; track contact.contactType; let index = $index) {
                     <div class="col-md-4">
                         <app-footer-item
-                            [icon]="iconsArray[index]"
+                            [icon]="contact.icon"
                             [contactType]="contact.contactType"
                             [contactInfo]="contact.contactInfo">
                         </app-footer-item>  

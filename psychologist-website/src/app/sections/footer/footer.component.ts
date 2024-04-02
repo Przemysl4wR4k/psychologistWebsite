@@ -1,37 +1,33 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faLocationDot, faPhone, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { FooterItemComponent } from './footer-item/footer-item.component';
 import { Observable, Subject, catchError, takeUntil, tap, throwError } from 'rxjs';
 import { ContactData, ContactType, FooterService } from './footer.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AlertService } from '../../shared/components/alert/alert.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [FontAwesomeModule, FooterItemComponent],
+  imports: [CommonModule, FontAwesomeModule, FooterItemComponent],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
 
 export class FooterComponent implements OnInit, OnDestroy {
-  faLocationDot = faLocationDot
-  faPhone = faPhone
-  faPaperPlane = faPaperPlane
-  contactTypes = ContactType
-  contactInfo$!: Observable<any>
+  contactData!: ContactData[]
+
   destroy$ = new Subject<void>()
   
-  constructor(private alertService: AlertService, private footerService: FooterService) {
-  }
+  constructor(private alertService: AlertService, private footerService: FooterService) {}
 
   ngOnInit(): void {
     this.footerService.getContactData()
       .pipe(
-        tap((contactData: ContactData[]) => console.log(contactData)),
-        catchError((err: HttpErrorResponse) => {
-          this.alertService.showErrorMessage(err.error.message)
+        tap((contactData: ContactData[]) => this.contactData = contactData),
+        catchError((err: HttpErrorResponse | string) => {
+          this.alertService.showErrorMessage(err)
           return throwError(() => err)
         }),
         takeUntil(this.destroy$)
