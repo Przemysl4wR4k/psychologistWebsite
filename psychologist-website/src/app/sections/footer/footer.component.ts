@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterItemComponent } from './footer-item/footer-item.component';
-import { Observable, Subject, catchError, takeUntil, tap, throwError } from 'rxjs';
-import { ContactData, ContactType, FooterService } from './footer.service';
+import { Subject, catchError, takeUntil, tap, throwError } from 'rxjs';
+import { ContactData, FooterService } from './footer.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AlertService } from '../../shared/components/alert/alert.service';
 import { CommonModule } from '@angular/common';
