@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterItemComponent } from './footer-item/footer-item.component';
 import { Subject, catchError, takeUntil, tap, throwError } from 'rxjs';
 import { ContactData, FooterService } from './footer.service';
@@ -10,7 +9,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, FooterItemComponent],
+  imports: [CommonModule, FooterItemComponent],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
