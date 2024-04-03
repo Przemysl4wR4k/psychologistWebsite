@@ -73,6 +73,14 @@ export class AboutComponent implements OnInit, OnDestroy {
     ).subscribe()
   }
 
+  editTeammate(teammate: TeamMember){
+
+  }
+  
+  deleteTeammate(teammate: TeamMember){
+
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next()
     this.destroy$.complete()

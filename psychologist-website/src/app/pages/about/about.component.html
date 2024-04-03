@@ -34,5 +34,7 @@
         [personName]="teammate.name"
         [tags]="teammate.tags"
         [personDescription]="teammate.description"
-        [link]="teammate.link"/>
+        [link]="teammate.link"
+        (editPerson)="editTeammate(teammate)"
+        (deletePerson)="deleteTeammate(teammate)"/>
 </section>
