@@ -1,50 +1,38 @@
 <section class="py-5">
-    <div>
-        <!-- <div class="team-description container d-flex justify-content-between align-items-center">
-            <h2 class="ms-4">
-                Nasz zespół:   
-            </h2>
-            <div>
-                TODO: Add search bar here
-            </div> 
-        </div>-->
-        <app-person-card
-            class="odd d-flex"
-            [personPhoto]="'../../../assets/images/paula.jpg'"
-            [personName]="'Paula Poznysz'"
-            [tags]="['psycholog','seksuolog','psychoterapeuta poznawczo-behawioralny']"
-            [personDescription]="'Jestem dyplomowanym psychologiem, seksuologiem, terapeutą w trakcie 4-letniej szkoły Psychoterapii
-            Poznawczo-Behawioarlnej (CBT) oraz członkiem Polskiego Towarzystwa Psychoterapii Poznawczej i
-            Behawioralnej. Doświadczenie zdobyłam w Centrum Neuropsychiatrii NEUROMED oraz w Zakładzie Seksuologii
-            Klinicznej PTP, w poradni zdrowia psychicznego Luxmed HARMONIA, oraz w Centrum Medycznym Ginemedica.'"
-            [link]="'https://www.znanylekarz.pl/paula-poznysz/seksuolog-psycholog/wroclaw'"
-            >
-        </app-person-card>
-        <app-person-card
-            class="even d-flex mt-5"
-            [personPhoto]="'../../../assets/images/max.jpg'"
-            [personName]="'Max Pawlicki'"
-            [tags]="['psycholog']"
-            [personDescription]="'Jestem mgr psychologii, psychoterapeutą pozytywnym w trakcie certyfikacji, seksuologiem w trakcie szkolenia. Doświadczenie
-            zawodowe zdobyłem we Wrocławskim Centrum Zdrowia SPZOZ, Stowarzyszeniu Ostoja oraz Stowarzyszeniu Eudajmonia.
-            Pracuję z osobami z mniejszości społecznych – osoby z niepełnosprawnościami, spektrum autyzmu, LGBTQA+. Wspieram osoby
-            dorosłe oraz młodzież od 16 roku życia. Specjalizuje się w podejściu mindfulness oraz compassion. Uważność i samowspółczucie
-            otwiera nas na życzliwość do siebie, koi i pociesza. Naucza zarządzania stresem a także określania oraz radzenia sobie z
-            emocjami.'"
-            [link]="'https://www.znanylekarz.pl/max-pawlicki/psycholog/wroclaw'"
-            >
-        </app-person-card>
-        <app-person-card class="odd d-flex"
-        [personPhoto]="'../../../assets/images/katarzyna.jpg'"
-        [personName]="'Katarzyna Kula'"
-        [tags]="['superwizor', 'psychoterapeuta poznawczo-behawioralny', 'psychoterapeuta uzależnień', 'psycholog']"
-        [personDescription]="'Superwizotka - aplikantka.  Wspieram specjalistów psychoterapii uzależnień.  
+    <form [formGroup]="teamMemberForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Imię i nazwisko:</label>
+            <input type="text" id="name" formControlName="name" class="form-control">
+        </div>
 
-        Jestem psycholożką, certyfikowaną psychoterapeutką uzależnień, certyfikowaną psychoterapeutką poznawczo-behawioralną, członkiem Polskiego Towarzystwa Suicydologicznego, Polskiego Towarzystwa Psychologicznego oraz Polskiego Towarzystwa Terapii Poznawczej i Behawioralnej. 
-        
-         Posiadam doświadczenie w projektach badawczych prowadzonych w Polsce (IPiN, IBE, PAN) oraz publikowałam artykuły na łamach specjalistycznych czasopism z dziedziny psychologii.'"
-        [link]="'https://www.znanylekarz.pl/katarzyna-kula-3/psycholog-psychoterapeuta/ostrowiec-swietokrzyski'"
-        >
-        </app-person-card>
-    </div>
+        <div class="form-group">
+            <label for="description">Opis:</label>
+            <textarea id="description" formControlName="description" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="tags">Tagi (oddziel przecinkami):</label>
+            <input type="text" id="tags" formControlName="tags" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="image">Zdjęcie:</label>
+            <input type="file" id="image" (change)="onFileSelected($event)" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="link">Link do znanylekarz:</label>
+            <input type="text" id="link" formControlName="link" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Dodaj użytkownika</button>
+    </form>
+    <app-person-card *ngFor="let teammate of teammates$ | async; let index = index"
+        class="odd mb-5 d-flex"
+        [ngClass]="{'odd': index % 2 === 0, 'even': index % 2 !== 0}"
+        [personPhoto]="teammate.img"
+        [personName]="teammate.name"
+        [tags]="teammate.tags"
+        [personDescription]="teammate.description"
+        [link]="teammate.link"/>
 </section>
