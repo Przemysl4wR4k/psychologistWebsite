@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
+import { Firestore, arrayRemove, doc, docData, setDoc, updateDoc } from '@angular/fire/firestore';
 import { Observable, first, from, map, switchMap } from 'rxjs';
 import { Storage, getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
 
@@ -49,6 +49,13 @@ export class AboutService {
               return from(setDoc(peopleDocRef, { teammates: existingTeamMembers }))
             })
           )
+    }
+
+    removeTeamMember(teamMember: TeamMember): Observable<void> {
+        const peopleDocRef = doc(this.firestore, 'collection/people');
+        return from(updateDoc(peopleDocRef, {
+          teammates: arrayRemove(teamMember)
+        }))
     }
 }
 

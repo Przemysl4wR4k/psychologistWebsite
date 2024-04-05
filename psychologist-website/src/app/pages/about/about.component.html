@@ -1,5 +1,5 @@
 <section class="py-5">
-    <form [formGroup]="teamMemberForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="teamMemberForm" (ngSubmit)="onSubmit()" class="d-flex flex-column">
         <div class="form-group">
             <label for="name">Imię i nazwisko:</label>
             <input type="text" id="name" formControlName="name" class="form-control">
@@ -24,8 +24,12 @@
             <label for="link">Link do znanylekarz:</label>
             <input type="text" id="link" formControlName="link" class="form-control">
         </div>
-
-        <button type="submit" class="btn btn-primary">Dodaj użytkownika</button>
+        <app-fancy-button
+        class="mx-auto my-4"
+        type="submit"
+        [buttonText]="'Dodaj użytkownika'"
+        [disabled]="!teamMemberForm.valid">
+    </app-fancy-button>
     </form>
     <app-person-card *ngFor="let teammate of teammates$ | async; let index = index"
         class="odd mb-5 d-flex"

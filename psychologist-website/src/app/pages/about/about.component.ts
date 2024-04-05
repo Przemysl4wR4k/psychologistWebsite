@@ -2,15 +2,17 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PersonCardComponent } from './person-card/person-card.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Observable, Subject, catchError, switchMap, take, takeUntil, tap, throwError } from 'rxjs';
+import { Observable, Subject, catchError, switchMap, takeUntil, tap, throwError } from 'rxjs';
 import { AboutService, TeamMember } from './about.service';
 import { AlertService } from '../../shared/components/alert/alert.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { FancyButtonComponent } from '../../shared/components/fancy-button/fancy-button.component';
+
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, PersonCardComponent, ReactiveFormsModule],
+  imports: [CommonModule, FancyButtonComponent, PersonCardComponent, ReactiveFormsModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
@@ -22,12 +24,12 @@ export class AboutComponent implements OnInit, OnDestroy {
     description: new FormControl('', Validators.required),
     tags: new FormControl(''),
     link: new FormControl('', Validators.required),
-    image: new FormControl(null, Validators.required)
+    image: new FormControl('', Validators.required)
   })
   teammates$!: Observable<TeamMember[]>
   destroy$ = new Subject<void>()
-  
-  constructor(private aboutService: AboutService, private alertService: AlertService) {}
+
+  constructor(private aboutService: AboutService, private alertService: AlertService) { }
 
   ngOnInit() {
     this.teammates$ = this.aboutService.getTeammates()
@@ -58,7 +60,7 @@ export class AboutComponent implements OnInit, OnDestroy {
           //@ts-ignore
           link: formValue.link,
           img: url
-        };
+        }
         return this.aboutService.addOrUpdateTeamMember(teamMember);
       }),
       tap(() => {
@@ -73,12 +75,31 @@ export class AboutComponent implements OnInit, OnDestroy {
     ).subscribe()
   }
 
-  editTeammate(teammate: TeamMember){
-
-  }
+  editTeammate(teamMember: TeamMember) {
+    this.teamMemberForm.setValue({
+      name: teamMember.name,
+      description: teamMember.description,
+      tags: teamMember.tags.join(', '),
+      image: teamMember.img,
+      link: teamMember.link
+    })
+    this.teamMemberForm.patchValue({image: null})
+    }
   
-  deleteTeammate(teammate: TeamMember){
-
+  deleteTeammate(teamMember: TeamMember){
+      if(confirm('Czy na pewno chcesz usunąć współpracownika ' + teamMember.name)) {
+      this.aboutService.removeTeamMember(teamMember)
+        .pipe(
+          tap(() => {
+            this.alertService.showSuccess('Użytkownik usunięty pomyślnie.')
+          }),
+          catchError((err: HttpErrorResponse | string) => {
+            this.alertService.showErrorMessage(err)
+            return throwError(() => err)
+          }),
+          takeUntil(this.destroy$)
+        ).subscribe()
+    }
   }
 
   ngOnDestroy(): void {
