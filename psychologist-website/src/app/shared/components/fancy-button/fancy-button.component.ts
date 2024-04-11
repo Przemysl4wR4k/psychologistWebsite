@@ -17,7 +17,6 @@ export class FancyButtonComponent {
   protected getStyle() {
     switch (this.buttonSize) {
       // case ButtonSize.S:
-      //   return {'background-color': 'red'}
       case ButtonSize.M:
         return {
           '--offset': '2px',
