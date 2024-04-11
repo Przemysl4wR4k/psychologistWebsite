@@ -17,7 +17,7 @@
 
         <div class="form-group">
             <label for="image">Zdjęcie:</label>
-            <input type="file" id="image" (change)="onFileSelected($event)" class="form-control">
+            <input type="file" id="image" #imageInput (change)="onFileSelected($event)" class="form-control">
         </div>
 
         <div class="form-group">

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { PersonCardComponent } from './person-card/person-card.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -18,6 +18,7 @@ import { FancyButtonComponent } from '../../shared/components/fancy-button/fancy
 })
 
 export class AboutComponent implements OnInit, OnDestroy {
+  @ViewChild('imageInput') imageInput!: ElementRef
 
   teamMemberForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -61,11 +62,14 @@ export class AboutComponent implements OnInit, OnDestroy {
           link: formValue.link,
           img: url
         }
-        return this.aboutService.addOrUpdateTeamMember(teamMember);
+        return this.aboutService.addOrUpdateTeamMember(teamMember)
       }),
       tap(() => {
         this.alertService.showSuccess('Użytkownik dodany pomyślnie.')
         this.teamMemberForm.reset()
+        if (this.imageInput && this.imageInput.nativeElement) {
+          this.imageInput.nativeElement.value = ''
+        }
       }),
       catchError((err: HttpErrorResponse | string) => {
         this.alertService.showErrorMessage(err)
@@ -79,29 +83,26 @@ export class AboutComponent implements OnInit, OnDestroy {
     this.teamMemberForm.setValue({
       name: teamMember.name,
       description: teamMember.description,
-      tags: teamMember.tags.join(', '),
+      tags: teamMember.tags.join(','),
       image: teamMember.img,
       link: teamMember.link
     })
-    this.teamMemberForm.patchValue({image: null})
-    }
-  
-  deleteTeammate(teamMember: TeamMember){
-      if(confirm('Czy na pewno chcesz usunąć współpracownika ' + teamMember.name)) {
-      this.aboutService.removeTeamMember(teamMember)
-        .pipe(
-          tap(() => {
-            this.alertService.showSuccess('Użytkownik usunięty pomyślnie.')
-          }),
-          catchError((err: HttpErrorResponse | string) => {
-            this.alertService.showErrorMessage(err)
-            return throwError(() => err)
-          }),
-          takeUntil(this.destroy$)
-        ).subscribe()
-    }
+    this.teamMemberForm.patchValue({ image: null })
   }
 
+  deleteTeammate(teamMember: TeamMember){
+    if(confirm('Czy na pewno chcesz usunąć współpracownika ' + teamMember.name + '?')) {
+        this.aboutService.removeFile(teamMember.img).pipe(
+            switchMap(() => this.aboutService.removeTeamMember(teamMember)),
+            tap(() => this.alertService.showSuccess('Użytkownik usunięty pomyślnie.')),
+            catchError((err: HttpErrorResponse | string) => {
+                this.alertService.showErrorMessage(err)
+                return throwError(() => err)
+            }),
+            takeUntil(this.destroy$)
+        ).subscribe() 
+    }
+}
   ngOnDestroy(): void {
     this.destroy$.next()
     this.destroy$.complete()

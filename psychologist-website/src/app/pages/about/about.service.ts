@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, arrayRemove, doc, docData, setDoc, updateDoc } from '@angular/fire/firestore';
 import { Observable, first, from, map, switchMap } from 'rxjs';
-import { Storage, getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
+import { Storage, deleteObject, getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
 
 @Injectable({
     providedIn: 'root'
@@ -10,10 +10,6 @@ import { Storage, getDownloadURL, ref, uploadBytesResumable } from '@angular/fir
 export class AboutService {
     constructor(private storage: Storage, private firestore: Firestore) { }
 
-    //   getQuote(): Observable<TeamMember[]> {
-    //     const contactDocRef = doc(this.firestore, 'collection/people')
-    //     return docData(contactDocRef).pipe(map((response: any) => response.teammates as TeamMember[]))
-    //   }
     getTeammates(): Observable<TeamMember[]> {
         const peopleDocRef = doc(this.firestore, 'collection/people')
         return docData(peopleDocRef, { idField: 'id' }).pipe(
@@ -22,7 +18,7 @@ export class AboutService {
       }
 
     uploadFile(file: File) {
-        const filePath = `teamMembers/${new Date().getTime()}_${file.name}`
+        const filePath = `teamMembers/${file.name}`
         const storageRef = ref(this.storage, filePath)
 
         const uploadTask = uploadBytesResumable(storageRef, file)
@@ -32,6 +28,12 @@ export class AboutService {
             switchMap((result) => getDownloadURL(result.ref))
         )
     }
+
+    removeFile(fileUrl: string) {
+        const fileRef = ref(this.storage, fileUrl)
+        return from(deleteObject(fileRef))
+    }
+    
 
     addOrUpdateTeamMember(teamMember: TeamMember) {
         const peopleDocRef = doc(this.firestore, 'collection/people')
