@@ -12,7 +12,7 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnDestroy {
-  title = 'psychologist-website';
+  title = 'psychologist-website'
   constructor(
     private router: Router) {}
     private destroy$ = new Subject<void>()

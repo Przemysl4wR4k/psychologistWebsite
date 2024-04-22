@@ -54,7 +54,7 @@ export class AboutService {
     }
 
     removeTeamMember(teamMember: TeamMember): Observable<void> {
-        const peopleDocRef = doc(this.firestore, 'collection/people');
+        const peopleDocRef = doc(this.firestore, 'collection/people')
         return from(updateDoc(peopleDocRef, {
           teammates: arrayRemove(teamMember)
         }))

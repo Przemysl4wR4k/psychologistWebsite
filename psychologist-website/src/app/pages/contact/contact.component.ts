@@ -18,8 +18,8 @@ import { AuthService } from '../../auth.service';
 })
 export class ContactComponent implements OnInit, OnDestroy {
   buttonSize = ButtonSize
-  contactForm: FormGroup;
-  destroy$ = new Subject<void>();
+  contactForm: FormGroup
+  destroy$ = new Subject<void>()
 
   emailFocused: boolean = false
   subjectFocused: boolean = false
@@ -53,8 +53,8 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    const formData = this.contactForm.value;
-    const url = 'https://formspree.io/f/xleqnqwz';
+    const formData = this.contactForm.value
+    const url = 'https://formspree.io/f/xleqnqwz'
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });

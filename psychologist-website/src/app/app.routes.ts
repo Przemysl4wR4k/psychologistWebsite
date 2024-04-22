@@ -10,4 +10,4 @@ export const routes: Routes = [
     {path: 'contact', component: ContactComponent},
     // {path: 'home', redirectTo: ''} //ommited on purpose
     {path: '**', component: PageNotFoundComponent}
-];
+]

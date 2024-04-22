@@ -13,9 +13,9 @@ import { ContactType } from '../footer.service';
 })
 
 export class FooterItemComponent {
-  @Input() icon!: IconDefinition;
-  @Input() contactType!: ContactType;
-  @Input() contactInfo: string | undefined;
+  @Input() icon!: IconDefinition
+  @Input() contactType!: ContactType
+  @Input() contactInfo: string | undefined
 
   contactTypes = ContactType
 }

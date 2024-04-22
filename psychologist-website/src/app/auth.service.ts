@@ -9,7 +9,7 @@ import { AlertService } from "./shared/components/alert/alert.service";
     providedIn: 'root'
 })
 export class AuthService {
-    user$: Observable<User | null>;
+    user$: Observable<User | null>
 
     constructor(private alertService: AlertService, private auth: Auth, private firestore: Firestore) {
         this.user$ = authState(this.auth).pipe(
@@ -27,9 +27,9 @@ export class AuthService {
                     return of(null)
                 }
             })
-        );
+        )
 
-        this.handleRedirect();
+        this.handleRedirect()
     }
 
     loginWithGoogle(): Observable<void> {

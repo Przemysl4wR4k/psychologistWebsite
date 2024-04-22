@@ -16,11 +16,11 @@ export class AlertService {
   }
 
   showSuccess(message: string, timeout: number = this.timeout) {
-    this.showAlert(message, AlertType.Success, timeout);
+    this.showAlert(message, AlertType.Success, timeout)
   }
   
   showErrorMessage(message: HttpErrorResponse | string, timeout: number = this.timeout) {
-    this.showAlert(message, AlertType.Danger, timeout);
+    this.showAlert(message, AlertType.Danger, timeout)
   }
 }
 

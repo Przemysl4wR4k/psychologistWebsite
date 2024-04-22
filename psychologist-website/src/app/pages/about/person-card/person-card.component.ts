@@ -13,11 +13,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 })
 export class PersonCardComponent {
 
-  @Input() personPhoto!: string;
-  @Input() personName!: string;
-  @Input() tags!: string[];
-  @Input() personDescription!: string;
-  @Input() link!: string;
+  @Input() personPhoto!: string
+  @Input() personName!: string
+  @Input() tags!: string[]
+  @Input() personDescription!: string
+  @Input() link!: string
 
   @Output() editPerson = new EventEmitter<void>()
   @Output() deletePerson = new EventEmitter()
@@ -29,6 +29,6 @@ export class PersonCardComponent {
   }
 
   openLink(): void {
-    window.open(this.link, '_blank');
+    window.open(this.link, '_blank')
   }
 }

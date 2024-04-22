@@ -26,13 +26,13 @@ export class FooterService {
   private getIconForContactType(contactType: ContactType): IconDefinition {
     switch (contactType) {
       case ContactType.PHONE:
-        return faPhone;
+        return faPhone
       case ContactType.EMAIL:
-        return faPaperPlane;
+        return faPaperPlane
       case ContactType.ADDRESS:
-        return faLocationDot;
+        return faLocationDot
       default:
-        throw new Error(`Unknown contact type: ${contactType}`);
+        throw new Error(`Unknown contact type: ${contactType}`)
     }
   }
 }

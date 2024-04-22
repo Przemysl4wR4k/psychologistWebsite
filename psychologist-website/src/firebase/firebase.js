@@ -10,5 +10,5 @@ const firebaseConfig = {
     measurementId: "G-WD2V264E44"
   }
 
-export const appFB = initializeApp(firebaseConfig);
+export const appFB = initializeApp(firebaseConfig)
     
