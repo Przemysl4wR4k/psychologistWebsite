@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageNotFoundComponent } from './page-not-found.component';
+import { CookiePolicyComponent } from './cookie-policy.component';
 
-describe('PageNotFoundComponent', () => {
-  let component: PageNotFoundComponent;
-  let fixture: ComponentFixture<PageNotFoundComponent>;
+describe('CookiePolicyComponent', () => {
+  let component: CookiePolicyComponent;
+  let fixture: ComponentFixture<CookiePolicyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PageNotFoundComponent]
+      imports: [CookiePolicyComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(PageNotFoundComponent);
+    fixture = TestBed.createComponent(CookiePolicyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
