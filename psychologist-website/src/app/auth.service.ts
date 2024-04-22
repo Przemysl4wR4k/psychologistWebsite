@@ -55,7 +55,7 @@ export class AuthService {
 
     logout(): Observable<void> {
         return from(signOut(this.auth)).pipe(
-            tap(() => console.log('Wylogowano poprawnie'))
+            tap(() => this.alertService.showSuccess('Wylogowano poprawnie'))
         )
     }
 }
