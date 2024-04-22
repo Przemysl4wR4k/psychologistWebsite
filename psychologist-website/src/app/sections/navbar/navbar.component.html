@@ -28,7 +28,18 @@
                 </ul>
             </div>
             <div class="navbar-side d-none d-lg-flex align-items-center">
-                <app-fancy-button [buttonText]="'Zaloguj się'"></app-fancy-button>
+                @if (authService.user$ | async) {
+                <app-fancy-button
+                    (click)="logout()"
+                    [buttonText]="'Wyloguj się'">
+                </app-fancy-button>
+                } @else {
+                <app-fancy-button
+                    (click)="loginWithGoogle()"
+                    [buttonText]="'Zaloguj się'">
+                </app-fancy-button>
+                }
+                
             </div>
         </div>
     </nav>

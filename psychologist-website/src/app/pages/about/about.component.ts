@@ -7,12 +7,14 @@ import { AboutService, TeamMember } from './about.service';
 import { AlertService } from '../../shared/components/alert/alert.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FancyButtonComponent } from '../../shared/components/fancy-button/fancy-button.component';
+import { AuthService } from '../../auth.service';
 
 
 @Component({
   selector: 'app-about',
   standalone: true,
   imports: [CommonModule, FancyButtonComponent, PersonCardComponent, ReactiveFormsModule],
+  providers: [AuthService],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
@@ -30,7 +32,11 @@ export class AboutComponent implements OnInit, OnDestroy {
   teammates$!: Observable<TeamMember[]>
   destroy$ = new Subject<void>()
 
-  constructor(private aboutService: AboutService, private alertService: AlertService) { }
+  constructor(
+    private aboutService: AboutService,
+    private alertService: AlertService,
+    protected authService: AuthService
+  ) { }
 
   ngOnInit() {
     this.teammates$ = this.aboutService.getTeammates()
@@ -90,19 +96,19 @@ export class AboutComponent implements OnInit, OnDestroy {
     this.teamMemberForm.patchValue({ image: null })
   }
 
-  deleteTeammate(teamMember: TeamMember){
-    if(confirm('Czy na pewno chcesz usunąć współpracownika ' + teamMember.name + '?')) {
-        this.aboutService.removeFile(teamMember.img).pipe(
-            switchMap(() => this.aboutService.removeTeamMember(teamMember)),
-            tap(() => this.alertService.showSuccess('Użytkownik usunięty pomyślnie.')),
-            catchError((err: HttpErrorResponse | string) => {
-                this.alertService.showErrorMessage(err)
-                return throwError(() => err)
-            }),
-            takeUntil(this.destroy$)
-        ).subscribe() 
+  deleteTeammate(teamMember: TeamMember) {
+    if (confirm('Czy na pewno chcesz usunąć współpracownika ' + teamMember.name + '?')) {
+      this.aboutService.removeFile(teamMember.img).pipe(
+        switchMap(() => this.aboutService.removeTeamMember(teamMember)),
+        tap(() => this.alertService.showSuccess('Użytkownik usunięty pomyślnie.')),
+        catchError((err: HttpErrorResponse | string) => {
+          this.alertService.showErrorMessage(err)
+          return throwError(() => err)
+        }),
+        takeUntil(this.destroy$)
+      ).subscribe()
     }
-}
+  }
   ngOnDestroy(): void {
     this.destroy$.next()
     this.destroy$.complete()
