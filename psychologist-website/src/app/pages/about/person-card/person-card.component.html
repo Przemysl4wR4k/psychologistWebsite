@@ -7,10 +7,12 @@
             <div class="card col-12 m-auto col-lg-6">
                     <h6 class="d-flex person-name">
                         {{personName}}
-                        <div class="ms-auto">
-                            <fa-icon [icon]="faEdit" (click)="editPerson.emit()"></fa-icon>
-                            <fa-icon class="ms-3" (click)="deletePerson.emit()" [icon]="faTrash"></fa-icon>    
-                        </div>
+                        <ng-container *ngIf="authService.user$ | async as user">
+                            <div *ngIf="user.isAdmin" class="ms-auto">
+                                <fa-icon [icon]="faEdit" (click)="editPerson.emit()"></fa-icon>
+                                <fa-icon class="ms-3" (click)="deletePerson.emit()" [icon]="faTrash"></fa-icon>    
+                            </div>
+                        </ng-container>
                     </h6>
                     <div class="d-flex flex-wrap">
                         <div *ngFor="let tag of tags" class="tag mr-2">{{tag}}</div>

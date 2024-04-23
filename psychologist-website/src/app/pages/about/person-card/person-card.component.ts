@@ -3,11 +3,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FancyButtonComponent } from '../../../shared/components/fancy-button/fancy-button.component';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthService } from '../../../auth.service';
 
 @Component({
   selector: 'app-person-card',
   standalone: true,
   imports: [CommonModule, FancyButtonComponent, FontAwesomeModule],
+  providers: [AuthService],
   templateUrl: './person-card.component.html',
   styleUrl: './person-card.component.scss'
 })
@@ -25,7 +27,7 @@ export class PersonCardComponent {
   faEdit = faEdit
   faTrash = faTrash
 
-  constructor() {
+  constructor(protected authService: AuthService) {
   }
 
   openLink(): void {
