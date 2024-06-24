@@ -1,9 +1,12 @@
-This project is still in the development phase.
+Work on this project has been suspended:
+
+results of this implementation can be seen at: https://seksuolog-wro.pl/
+
 The code still hasnt been cleaned. It probably needs some optimization in 
 some places. Scss files should have more unified structure.
 Resigned from creating model files. Maybe will implement one common model file later.
 
-Styles and functionalities have been determined together with the person who will use the website in the future.
+Styles and functionalities have been determined together with the client.
 
 
 # PsychologistWebsite
